@@ -1,13 +1,40 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
-
+@import url('https://fonts.googleapis.com/css?family=Muli');
 // Variables
 @import 'variables';
+@import 'login';
 
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
-
+html, body {
+    margin: 0;
+    font-family: 'Muli';
+    * {
+        transition: ease 0.2s all;
+    }
+}
+a {
+    text-decoration: none;
+}
 .navbar-laravel {
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+.navbar > .container {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(238, 238, 238);
+    padding: 1em;
+    li {
+        list-style-type: none;
+    }
+    a {
+        text-decoration: none;
+        color: black;
+        font-size: 1.2em;
+    }
+    .navbar-brand {
+        flex-basis: 100%
+    }
+    .login {
+        margin-right: 1em;
+    }
 }
