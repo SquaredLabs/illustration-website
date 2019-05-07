@@ -1,0 +1,58 @@
+form {
+  width: 80%;
+  min-width: 400px;
+  max-width: 750px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.2em;
+  * {
+    flex: 1 1 33%;
+    margin: 5px;
+  }
+  h1 {
+    flex-basis: 100%;
+    text-align: center;
+  }
+  input{
+    padding: 10px;
+    border: none;
+    outline: none;
+    background-color: rgb(235, 235, 235);
+    margin-bottom: 1em;
+    font-size: 1.2em;
+    &:focus {
+      background: rgb(214, 214, 214);
+    }
+  }
+  input[name='email'], input[name='password']{
+    flex: 1 1 45%;
+  }
+  input[name='email']{
+    margin-right: 10px;
+  }
+  button {
+    flex: 1 1 150px;
+    font-size: 1.1em;
+    padding: 10px;
+    background-color: rgb(222, 222, 255);
+    border: none;
+  }
+  button:hover{
+    cursor: pointer;
+    background-color: rgb(60, 60, 165);
+    color: white;
+    a {
+      color: white;
+    }
+  }
+}
+.illustration > form {
+  flex-direction: column;
+  width: 100%;
+  max-width: 100%;
+  button {
+    flex-basis: 100%;
+  }
+}

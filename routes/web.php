@@ -1,16 +1,5 @@
 <?php
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
+use App\Illustration;
 
 Auth::routes();
 
@@ -22,6 +11,13 @@ Route::redirect('/logincas', '/')->middleware('auth.cas');
 
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::redirect('/admin', '/admin/home');
+    Route::post('/illustration', function($request){
+        $illustration = new Illustration;
+        $illustration->title = $request->input('title');
+        $illustration->description = $request->input('description');
+        $illustration->image = $request->file('image')->store('illustrations');
+        $illustration->save();
+    });
     Route::get('/admin/{view}', function ($view) {
         try{
             return view('admin.' . $view);

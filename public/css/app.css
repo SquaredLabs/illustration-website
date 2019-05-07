@@ -26,9 +26,7 @@ form h1 {
   text-align: center;
 }
 
-form input[name=email],
-form input[name=password] {
-  flex: 1 1 45%;
+form input {
   padding: 10px;
   border: none;
   outline: none;
@@ -37,9 +35,13 @@ form input[name=password] {
   font-size: 1.2em;
 }
 
-form input[name=email]:focus,
-form input[name=password]:focus {
+form input:focus {
   background: #d6d6d6;
+}
+
+form input[name=email],
+form input[name=password] {
+  flex: 1 1 45%;
 }
 
 form input[name=email] {
@@ -62,6 +64,16 @@ form button:hover {
 
 form button:hover a {
   color: white;
+}
+
+.illustration > form {
+  flex-direction: column;
+  width: 100%;
+  max-width: 100%;
+}
+
+.illustration > form button {
+  flex-basis: 100%;
 }
 
 html,
