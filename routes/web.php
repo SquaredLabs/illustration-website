@@ -15,6 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/portfolio', function () {
+    return view('portfolio');
+});
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -22,3 +27,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/logincas', function () {
     return view('home');
 })->middleware('auth.cas');;
+
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/admin', function () {
+        return view('admin');
+    });
+});
