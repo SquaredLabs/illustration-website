@@ -11,19 +11,23 @@
 |
 */
 
-Route::get('/portfolio', function () {
-    return view('portfolio');
-});
-
 
 Auth::routes();
 
-Route::view('/', 'portfolio');
+Route::redirect('/', 'portfolio');
+Route::redirect('/home', '/portfolio');
+Route::view('/portfolio', 'portfolio');
+
 Route::redirect('/logincas', '/')->middleware('auth.cas');
 
-
 Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/admin', function () {
-        return view('admin');
+    Route::redirect('/admin', '/admin/home');
+    Route::get('/admin/{view}', function ($view) {
+        try{
+            return view('admin.' . $view);
+        }
+        catch(\Exception $e){
+            abort(404);
+        }
     });
 });
