@@ -35,7 +35,7 @@ services:
     networks:
       - app-network
     volumes:
-      - dbdata:/var/lib/mysql
+      - illustration_website_dbdata:/var/lib/mysql
       - ./mysql/my.cnf:/etc/mysql/my.cnf
 
   #PHP Service
@@ -64,5 +64,5 @@ networks:
   app-network:
     driver: bridge
 volumes:
-  dbdata:
+  illustration_website_dbdata:
     driver: local
