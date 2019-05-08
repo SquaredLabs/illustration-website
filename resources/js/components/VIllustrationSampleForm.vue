@@ -40,10 +40,8 @@ export default {
   },
   methods: {
     onChange(image){
-      console.log('New picture selected!')
       if (image) {
-        console.log('Picture loaded.')
-        this.image = image
+        this.image = this.$refs.pictureInput.file
       } else {
         console.log('FileReader API not supported: use the <form>!')
       }
@@ -54,7 +52,7 @@ export default {
       formdata.append('image', this.image)
       formdata.append('title', this.title)
       formdata.append('description', this.description)
-      const raw = await fetch("/illustration", {
+      const raw = await fetch("/api/illustration", {
         method: "post",
         headers: {
           Accept: "application/json",
@@ -62,13 +60,16 @@ export default {
         },
         body: formdata
       })
-      if (raw.status != 200 || true) {
+      if (raw.status != 200) {
         const json = await raw.json()
         const text = JSON.stringify(json)
         console.error(text)
         alert(
           "Something went wrong. Please contact SquaredLabs (squaredlabs@uconn.edu)"
         )
+      }
+      else{
+        window.location.href = '/admin/home';
       }
     }
   }
