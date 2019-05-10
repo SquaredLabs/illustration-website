@@ -5,17 +5,19 @@ A website designed to show off SquaredLabs Scientific Illustrations, as well as 
 ```bash
 cp .env.example .env
 #Add database configuration in .env
-composer install
 ```
 **Then,**
 ### Developing
 ```bash
-php artisan migrate
+composer install
+php artisan migrate --seed
 php artisan serve
 ```
 ### Docker
 Edit `.env`, make sure `DB_HOST=db`
 ```bash
 docker-compose up -d
-docker-compose exec app php artisan migrate
+docker-compose exec app composer install &&  
+  php artisan key:generate && 
+  php artisan migrate
 ```
