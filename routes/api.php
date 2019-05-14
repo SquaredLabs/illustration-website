@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use App\Illustration;
 use App\User;
 use App\Request as IllustrationRequest;
+use Illuminate\Support\Facades\Storage;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,13 @@ Route::middleware(['auth', 'admin'])->group(function () {
         $illustration->description = $request->input('description');
         $illustration->image = $request->file('image')->store('public/illustrations');
         $illustration->save();
+    });
+    Route::get('/illustration/delete/{id}', function ($id, Request $request) {
+        $illustration = Illustration::find($id);
+        if(!$illustration) return 'That illustration does not exist';
+        Storage::delete('public/'.$illustration->image);
+        $illustration->delete();
+        return  'Successfully deleted `'.$illustration->title.'`';
     });
     Route::get('/requests', function (Request $request) {
         return IllustrationRequest::with(['requestee', 'illustrator'])->get();
