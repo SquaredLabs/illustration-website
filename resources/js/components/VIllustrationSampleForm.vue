@@ -47,7 +47,6 @@ export default {
       }
     },
     async submit(){
-      console.log('submit')
       let formdata = new FormData()
       formdata.append('image', this.image)
       formdata.append('title', this.title)
@@ -69,9 +68,15 @@ export default {
         )
       }
       else{
-        window.location.href = '/admin/home';
+        window.location.reload()
       }
     }
   }
 }
 </script>
+<style scoped>
+  h1 {
+    margin: 1em;
+    font-size: 2.5em;
+  }
+</style>

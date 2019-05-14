@@ -23,9 +23,6 @@ export default {
 }
 </script>
 <style scoped>
-  .portfolio {
-
-  }
   h1 {
     margin: 1em;
     font-size: 2.5em;
