@@ -16,7 +16,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'colinm',
             'email' => 'colin@uconn.edu',
             'admin' => true,
-            'password' => bcrypt('colinm'),
+            'netid' => 'cam13052',
         ]);
         User::updateOrCreate(['name' => 'Courtney'], [
             'name' => 'Courtney',
@@ -24,7 +24,6 @@ class UsersTableSeeder extends Seeder
             'admin' => true,
             'netid' => 'caw00004',
         ]);
-
-
+        factory(User::class, 25)->create();
     }
 }

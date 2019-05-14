@@ -2,6 +2,9 @@
 
 use Illuminate\Http\Request;
 use App\Illustration;
+use App\User;
+use App\Request as IllustrationRequest;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -32,4 +35,12 @@ Route::middleware(['auth', 'admin'])->group(function () {
         $illustration->image = $request->file('image')->store('public/illustrations');
         $illustration->save();
     });
+    Route::get('/requests', function (Request $request) {
+        return IllustrationRequest::with(['requestee', 'illustrator'])->get();
+    });
+    Route::get('/users', function (Request $request) {
+        return User::all();
+    });
+    
+
 });
