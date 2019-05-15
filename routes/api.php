@@ -27,8 +27,26 @@ Route::get('/illustrations', function(){
         return $illustration;
     });
 });
-
-Route::middleware(['auth', 'admin'])->group(function () {
+Route::middleware('auth.cas')->group(function () {
+    Route::post('/request', function (Request $request) {
+        $request->validate([
+            'cover' => 'required|boolean',
+            'deadline' => 'date|nullable',
+            'description' => 'required',
+            'journal' => 'string|nullable',
+            'kfs' => 'required|string|max:7',
+        ]);
+        $IllustrationRequest = new IllustrationRequest;
+        $IllustrationRequest->cover = $request->input('cover');
+        $IllustrationRequest->deadline = $request->input('deadline');
+        $IllustrationRequest->description = $request->input('description');
+        $IllustrationRequest->journal = $request->input('journal');
+        $IllustrationRequest->kfs = $request->input('kfs');
+        $IllustrationRequest->requestee = $request->user()->id;
+        $IllustrationRequest->save();
+    });
+});
+Route::middleware(['auth.cas', 'admin'])->group(function () {
     Route::post('/illustration', function (Request $request) {
         $illustration = new Illustration;
         $illustration->title = $request->input('title');
@@ -49,6 +67,4 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/users', function (Request $request) {
         return User::all();
     });
-    
-
 });

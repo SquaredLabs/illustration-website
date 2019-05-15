@@ -11,6 +11,9 @@
       :desc="illustration.description" 
       :title="illustration.title"/>
   </div>
+  <div class="request">
+    <a href="/request">Request an Illustration</a>
+  </div>
 </div>
 </template>
 <script>
@@ -31,5 +34,22 @@ export default {
     display: flex;
     flex-wrap: wrap;
     overflow: auto;
+  }
+  a {
+    color: white;
+  }
+  .request {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #dd3e3f;
+    padding: 0.5em;
+    font-size: 1.3em;
+    font-weight: bold;
+  }
+  .request:hover{
+    cursor: pointer;
+    background-color: #b83d3d;
   }
 </style>

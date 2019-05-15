@@ -9,8 +9,10 @@ Route::redirect('/home', '/portfolio');
 Route::view('/portfolio', 'portfolio');
 
 Route::redirect('/logincas', '/')->middleware('auth.cas');
-
-Route::middleware(['auth', 'admin'])->group(function () {
+Route::middleware('auth.cas')->group(function () {
+    Route::view('/request', 'request');
+});
+Route::middleware(['auth.cas', 'admin'])->group(function () {
     Route::redirect('/admin', '/admin/home');
     Route::get('/admin/{view}', function ($view) {
         try{
