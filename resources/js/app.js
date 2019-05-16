@@ -26,6 +26,7 @@ Vue.component('v-request-form', require('./components/VRequestForm.vue').default
 
 Vue.component('v-portfolio', require('./pages/portfolio.vue').default);
 Vue.component('v-requests', require('./pages/requests.vue').default);
+Vue.component('v-contract', require('./pages/contract.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

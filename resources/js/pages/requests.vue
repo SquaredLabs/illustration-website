@@ -20,7 +20,7 @@
         <div><p>KFS</p><span class="kfs">{{request.kfs}}</span></div>
         <div><p>Name</p><span class="kfs">{{request.requestee.name}}</span></div>
         <div><p>Email</p><span class="contact">{{request.requestee.email}}</span></div>
-        <div class="button"><button>Draft Contract</button></div>
+        <div class="button"><button><a :href="`/admin/contract?${request.id}`">Draft Contract</a></button></div>
       </div>
       </transition>
     </div>

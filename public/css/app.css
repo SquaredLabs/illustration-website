@@ -89,7 +89,7 @@ body * {
 
 a {
   text-decoration: none;
-  color: black;
+  color: inherit;
 }
 
 .navbar-laravel {
@@ -120,5 +120,31 @@ a {
 
 .navbar > .container .login {
   margin-right: 1em;
+}
+
+.admin.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2em;
+}
+
+.adminLink {
+  outline: none;
+  border: none;
+  padding: 0.5em 1em;
+  background-color: #dd3e3f;
+  color: white;
+  border: solid white 2px;
+  font-size: 1.3em;
+  font-weight: bold;
+  margin-top: 1em;
+}
+
+.adminLink:hover {
+  cursor: pointer;
+  background-color: white;
+  color: #dd3e3f;
+  border-color: #dd3e3f;
 }
 

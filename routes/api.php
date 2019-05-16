@@ -27,6 +27,12 @@ Route::get('/illustrations', function(){
         return $illustration;
     });
 });
+
+Route::get('/me', function (Request $request) {
+    return $request->user();
+});
+
+
 Route::middleware('auth.cas')->group(function () {
     Route::post('/request', function (Request $request) {
         $request->validate([
@@ -44,6 +50,9 @@ Route::middleware('auth.cas')->group(function () {
         $IllustrationRequest->kfs = $request->input('kfs');
         $IllustrationRequest->requestee = $request->user()->id;
         $IllustrationRequest->save();
+    });
+    Route::get('/contract/{id}', function ($id, Request $request) {
+        return IllustrationRequest::with(['requestee', 'illustrator'])->get()->find($id);
     });
 });
 Route::middleware(['auth.cas', 'admin'])->group(function () {
