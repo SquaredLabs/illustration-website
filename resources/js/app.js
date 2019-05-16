@@ -23,7 +23,9 @@ Vue.component('v-portfolio-item', require('./components/VPortfolioItem.vue').def
 Vue.component('v-illustration-sample-form', require('./components/VIllustrationSampleForm.vue').default);
 Vue.component('v-portfolio-preview', require('./components/VPortfolioPreview.vue').default);
 Vue.component('v-request-form', require('./components/VRequestForm.vue').default);
+
 Vue.component('v-portfolio', require('./pages/portfolio.vue').default);
+Vue.component('v-requests', require('./pages/requests.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
