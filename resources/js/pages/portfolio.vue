@@ -12,16 +12,19 @@
       :title="illustration.title"/>
   </div>
   <div class="request">
-    <a href="/request">Request an Illustration</a>
+    <a v-if="me && me.admin" href="/admin">Manage Site</a>
+    <a v-else href="/request">Request an Illustration</a>
   </div>
 </div>
 </template>
 <script>
 export default {
-  data:()=>({illustrations: []}),
+  data:()=>({illustrations: [], me: null}),
   async created(){
-    const raw = await fetch('/api/illustrations')
+    let raw = await fetch('/api/illustrations')
     this.illustrations = await raw.json()
+    raw = await fetch('/api/me')
+    this.me = await raw.json()
   }
 }
 </script>

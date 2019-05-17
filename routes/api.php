@@ -76,4 +76,18 @@ Route::middleware(['auth.cas', 'admin'])->group(function () {
     Route::get('/users', function (Request $request) {
         return User::all();
     });
+    Route::get('/admin/new/{id}', function ($id, Request $request) {
+        $admin = User::find($id);
+        if(!$admin) return 'That is not a user!';
+        $admin->admin = true;
+        $admin->save();
+        return 'Successfully added '.$admin->name.' as admin.';
+    });
+    Route::get('/admin/remove/{id}', function ($id, Request $request) {
+        $admin = User::find($id);
+        if(!$admin) return 'That is not a user!';
+        $admin->admin = false;
+        $admin->save();
+        return 'Successfully removed '.$admin->name.' as admin.';
+    });
 });
